@@ -1,2 +1,0 @@
-(this["webpackJsonpsodiq-vezeti-assignment"]=this["webpackJsonpsodiq-vezeti-assignment"]||[]).push([[72],{2135:function(e,t,n){"use strict";n.r(t);var a=n(0),s=n.n(a),i=n(336),l=Object(a.lazy)((function(){return n.e(58).then(n.bind(null,2092))}));t.default=function(){return s.a.createElement(i.a,{title:"State Management"},s.a.createElement(a.Suspense,{fallback:null},s.a.createElement(l,null)))}}}]);
-//# sourceMappingURL=72.d304221b.chunk.js.map
