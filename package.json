@@ -1,5 +1,4 @@
 {
-  "homepage": "techiesodiq.github.io/sodiq-vezeti-assignment",
   "name": "sodiq-vezeti-assignment",
   "author": "DeviasIO",
   "licence": "UNLICENSED",
@@ -7,7 +6,6 @@
   "private": true,
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "lint": "eslint ./src",
     "start": "react-scripts start",
     "build": "react-scripts build",

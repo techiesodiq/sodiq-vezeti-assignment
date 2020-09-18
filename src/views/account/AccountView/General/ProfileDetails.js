@@ -13,6 +13,7 @@ import {
   Typography,
   makeStyles
 } from '@material-ui/core';
+import PhoneIcon from '@material-ui/icons/Phone';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -27,6 +28,17 @@ const useStyles = makeStyles(theme => ({
 
 const ProfileDetails = ({ className, user, ...rest }) => {
   const classes = useStyles();
+
+  function moneyFormat(price, sign = '₦') {
+    const pieces = parseFloat(price)
+      .toFixed(2)
+      .split('');
+    let ii = pieces.length - 3;
+    while ((ii -= 3) > 0) {
+      pieces.splice(ii, 0, ',');
+    }
+    return sign + pieces.join('');
+  }
 
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
@@ -47,7 +59,8 @@ const ProfileDetails = ({ className, user, ...rest }) => {
             {user.userFirstName} {user.userLastName}
           </Typography>
           <Typography color="textPrimary" variant="body1">
-            Your tier:{' '}
+            Your balance:&emsp;
+            {user.userAccountBalance && moneyFormat(user.userAccountBalance)}
             <Link component={RouterLink} to="/pricing">
               {user.tier}
             </Link>
@@ -59,6 +72,30 @@ const ProfileDetails = ({ className, user, ...rest }) => {
           Remove picture
         </Button>
       </CardActions>
+
+      <br />
+      <hr />
+      <Box
+        pt={1}
+        pb={3}
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Box>
+          <PhoneIcon />
+        </Box>
+
+        <Box ml={1}>
+          <Typography
+            color="textPrimary"
+            variant="body1"
+            style={{ textAlign: 'center' }}
+          >
+            {user.userPhoneNumber}
+          </Typography>
+        </Box>
+      </Box>
     </Card>
   );
 };

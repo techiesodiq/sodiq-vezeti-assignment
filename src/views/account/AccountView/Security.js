@@ -115,7 +115,7 @@ const Security = ({ className, ...rest }) => {
         }) => (
           <form onSubmit={handleSubmit}>
             <Card className={clsx(classes.root, className)} {...rest}>
-              <CardHeader title="Change Password" />
+              <CardHeader title="Change Email" />
               <Divider />
               <CardContent>
                 {loading && <LinearProgress />}
