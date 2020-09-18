@@ -1,8 +1,4 @@
-import React, {
-  createContext,
-  useEffect,
-  useReducer
-} from 'react';
+import React, { createContext, useEffect, useReducer } from 'react';
 import { Auth0Client } from '@auth0/auth0-spa-js';
 import SplashScreen from 'src/components/SplashScreen';
 import { auth0Config } from 'src/config';
@@ -53,13 +49,13 @@ const AuthContext = createContext({
   ...initialAuthState,
   method: 'Auth0',
   loginWithPopup: () => Promise.resolve(),
-  logout: () => { }
+  logout: () => {}
 });
 
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialAuthState);
 
-  const loginWithPopup = async (options) => {
+  const loginWithPopup = async options => {
     await auth0Client.loginWithPopup(options);
 
     const isAuthenticated = await auth0Client.isAuthenticated();
@@ -152,6 +148,7 @@ export const AuthProvider = ({ children }) => {
     return <SplashScreen />;
   }
 
+  console.log('clicking');
   return (
     <AuthContext.Provider
       value={{
