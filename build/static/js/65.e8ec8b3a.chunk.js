@@ -1,0 +1,2 @@
+(this["webpackJsonpsodiq-vezeti-assignment"]=this["webpackJsonpsodiq-vezeti-assignment"]||[]).push([[65],{2132:function(e,t,n){"use strict";n.r(t);var a=n(0),i=n.n(a),l=n(336),s=Object(a.lazy)((function(){return Promise.all([n.e(83),n.e(51)]).then(n.bind(null,2096))}));t.default=function(){return i.a.createElement(l.a,{title:"Authentication"},i.a.createElement(a.Suspense,{fallback:null},i.a.createElement(s,null)))}}}]);
+//# sourceMappingURL=65.e8ec8b3a.chunk.js.map

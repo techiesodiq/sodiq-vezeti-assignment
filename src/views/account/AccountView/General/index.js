@@ -22,6 +22,7 @@ const General = ({ className, ...rest }) => {
     onSuccess: async res => {
       //console.log(res);
       //await login(res.responseData);
+      console.log(res);
       setState(res.responseData);
     },
     onError: err => {
