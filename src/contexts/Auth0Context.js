@@ -148,7 +148,6 @@ export const AuthProvider = ({ children }) => {
     return <SplashScreen />;
   }
 
-  console.log('clicking');
   return (
     <AuthContext.Provider
       value={{
