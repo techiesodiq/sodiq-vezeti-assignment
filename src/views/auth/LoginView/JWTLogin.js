@@ -24,7 +24,7 @@ const useStyles = makeStyles(() => ({
 
 const JWTLogin = ({ className, ...rest }) => {
   const { runFetch, error, success, loading } = useFetch({
-    uri: '/login/',
+    path: '/login/',
     method: 'POST',
     onSuccess: async res => {
       //console.log(res);
@@ -57,6 +57,7 @@ const JWTLogin = ({ className, ...rest }) => {
       onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
         try {
           // await login(values.email, values.password);
+          //send to api
           runFetch({
             ...values,
             typeEmailOrPhone: 'email'

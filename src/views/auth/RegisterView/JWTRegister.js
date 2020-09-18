@@ -25,7 +25,7 @@ const useStyles = makeStyles(() => ({
 
 const JWTRegister = ({ className, ...rest }) => {
   const { runFetch, error, success, loading } = useFetch({
-    uri: '/signup/',
+    path: '/signup/',
     method: 'POST',
     onSuccess: async res => {
       console.log(res);

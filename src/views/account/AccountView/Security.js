@@ -30,7 +30,7 @@ const Security = ({ className, ...rest }) => {
   const { enqueueSnackbar } = useSnackbar();
 
   const { runFetch, error, success, loading } = useFetch({
-    uri: '/change-user-email/',
+    path: '/change-user-email/',
     method: 'POST',
     onSuccess: async res => {
       //console.log(res);
@@ -50,7 +50,7 @@ const Security = ({ className, ...rest }) => {
     success: pinSuccess,
     loading: pinLoading
   } = useFetch({
-    uri: '/forgotpin/',
+    path: '/forgotpin/',
     method: 'POST',
     onSuccess: async res => {
       //console.log(res);

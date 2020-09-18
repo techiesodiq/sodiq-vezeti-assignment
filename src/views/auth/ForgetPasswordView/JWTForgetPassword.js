@@ -22,7 +22,7 @@ const useStyles = makeStyles(() => ({
 
 const JWTLogin = ({ className, ...rest }) => {
   const { runFetch, error, success, loading } = useFetch({
-    uri: '/forgotpassword/',
+    path: '/forgotpassword/',
     method: 'POST',
     onSuccess: async res => {
       //console.log(res);

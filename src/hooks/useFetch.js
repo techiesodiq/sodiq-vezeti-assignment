@@ -1,14 +1,18 @@
 import React from 'react';
 import useState from './useState';
-export default function useFetch({ uri, method, onSuccess, onError }) {
+export default function useFetch({ path, method, onSuccess, onError }) {
   const [state, setState] = useState({
     loading: false,
     error: null,
     success: null
   });
+
   const runFetch = data => {
     setState({ loading: true, error: null, success: null });
     let stringData = '';
+
+    //Prepare data for get request
+    //sample output name=test&password=password
     if (method === 'GET') {
       if (data) {
         Object.keys(data).map((key, index) => {
@@ -20,9 +24,13 @@ export default function useFetch({ uri, method, onSuccess, onError }) {
         });
       }
     }
+
+    //Add orgId to incoming payload because it must be all the request
     if (method === 'POST') {
       data = { ...(data || {}), orgId: '728934' };
     }
+
+    //Basic authentication and setup data fetch.
     let options = {
       method,
       headers: {
@@ -31,11 +39,16 @@ export default function useFetch({ uri, method, onSuccess, onError }) {
           'Basic ' + btoa(`sodiq.akanmu001@gmail.com:FrewQ12Sdcv33aqEz!`)
       }
     };
+
+    //stringify incoming payload for the api request
+    //sample data "{name: \'test\', password: \'passowrd\'}"
     if (method === 'POST') {
       Object.assign(options, { body: JSON.stringify(data) });
     }
+
+    //execute fetch operation
     fetch(
-      `https://secure.vezeti.net/test-api/v3${uri}${
+      `https://secure.vezeti.net/test-api/v3${path}${
         method === 'GET' && stringData ? `?${stringData}` : ''
       }`,
       options
@@ -44,6 +57,7 @@ export default function useFetch({ uri, method, onSuccess, onError }) {
         return r.json();
       })
       .then(res => {
+        //check for success response
         if (res.responseCode === '00') {
           setState({
             loading: false,
@@ -54,6 +68,7 @@ export default function useFetch({ uri, method, onSuccess, onError }) {
             onSuccess(res);
           }
         } else {
+          //error response
           setState({
             error: res.responseMessage,
             loading: false,
@@ -65,6 +80,7 @@ export default function useFetch({ uri, method, onSuccess, onError }) {
         }
       })
       .catch(err => {
+        //Unauthorize or network error
         setState({
           error: 'Network Connectivity Error',
           loading: false,
