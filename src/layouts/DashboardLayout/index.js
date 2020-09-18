@@ -45,10 +45,12 @@ const DashboardLayout = ({ children }) => {
     let interval = setInterval(() => {
       counter++;
 
-      if (counter === 5) {
+      //after 10 sec logout
+      if (counter === 10) {
         handleLogout();
       }
     }, 1000);
+
     return () => {
       try {
         clearInterval(interval);
@@ -62,13 +64,14 @@ const DashboardLayout = ({ children }) => {
       await logout();
       history.push('/');
     } catch (err) {
-      console.error(err);
-      enqueueSnackbar('Unable to logout', {
-        variant: 'error'
-      });
+      // console.error(err);
+      // enqueueSnackbar('Unable to logout', {
+      //   variant: 'error'
+      // });
     }
   };
 
+  //on click return counter to zero
   const handleClick = async () => {
     counter = 0;
   };
