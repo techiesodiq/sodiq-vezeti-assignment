@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
+import Button from '@material-ui/core/Button';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
+import 'swiper/swiper-bundle.css';
 import {
   Box,
   Container,
@@ -9,7 +13,41 @@ import {
   makeStyles
 } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
+SwiperCore.use([Navigation, Pagination, Autoplay]);
+
+const slides = [];
+for (let i = 0; i < 1; i += 1) {
+  slides.push(
+    <SwiperSlide key={'slide-${i}'}>
+      <img src="/static/images/im07.svg" alt="" style={{ listStyle: 'none' }} />
+    </SwiperSlide>
+  );
+
+  slides.push(
+    <SwiperSlide key={'slide-${i}'}>
+      <img src="/static/images/im08.svg" alt="" style={{ listStyle: 'none' }} />
+    </SwiperSlide>
+  );
+
+  slides.push(
+    <SwiperSlide key={'slide-${i}'}>
+      <img src="/static/images/im10.svg" alt="" style={{ listStyle: 'none' }} />
+    </SwiperSlide>
+  );
+
+  slides.push(
+    <SwiperSlide key={'slide-${i}'}>
+      <img src="/static/images/im02.svg" alt="" style={{ listStyle: 'none' }} />
+    </SwiperSlide>
+  );
+  slides.push(
+    <SwiperSlide key={'slide-${i}'}>
+      <img src="/static/images/im00.svg" alt="" style={{ listStyle: 'none' }} />
+    </SwiperSlide>
+  );
+}
+
+const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.background.dark,
     paddingTop: 200,
@@ -27,6 +65,8 @@ const useStyles = makeStyles((theme) => ({
     perspectiveOrigin: 'left center',
     transformStyle: 'preserve-3d',
     perspective: 1500,
+    height: '40',
+    width: '60',
     '& > img': {
       maxWidth: '90%',
       height: 'auto',
@@ -34,6 +74,15 @@ const useStyles = makeStyles((theme) => ({
       backfaceVisibility: 'hidden',
       boxShadow: theme.shadows[16]
     }
+  },
+  typo: {
+    fontSize: '23px'
+  },
+  typo1: {
+    fontSize: '20px'
+  },
+  typo2: {
+    fontSize: '40px'
   },
   shape: {
     position: 'absolute',
@@ -50,20 +99,10 @@ const Hero = ({ className, ...rest }) => {
   const classes = useStyles();
 
   return (
-    <div
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
+    <div className={clsx(classes.root, className)} {...rest}>
       <Container maxWidth="lg">
-        <Grid
-          container
-          spacing={3}
-        >
-          <Grid
-            item
-            xs={12}
-            md={5}
-          >
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={5}>
             <Box
               display="flex"
               flexDirection="column"
@@ -71,78 +110,63 @@ const Hero = ({ className, ...rest }) => {
               height="100%"
             >
               <Typography
+                className={classes.typo1}
                 variant="overline"
                 color="secondary"
               >
-                Introducing
+                This is Vezeti
               </Typography>
               <Typography
+                className={classes.typo2}
                 variant="h1"
                 color="textPrimary"
               >
-                Devias React Material Kit - PRO
+                Instant Business <br /> Communication Platform
               </Typography>
               <Box mt={3}>
                 <Typography
                   variant="body1"
                   color="textSecondary"
+                  className={classes.typo}
                 >
-                  A professional kit that comes with ready-to-use Material-UI© components
-                  developed with one common goal in mind, help you build faster &amp; beautiful
-                  applications. Each component is fully customizable,
-                  responsive and easy to integrate.
+                  For as low as ₦2,500/month. Setup in 10 mins. No Contract.
+                  Free Signup. Do-It-Yourself(DIY). Instant Calling.
                 </Typography>
               </Box>
               <Box mt={3}>
-                <Grid
-                  container
-                  spacing={3}
-                >
+                <Grid container spacing={3}>
                   <Grid item>
-                    <Typography
-                      variant="h1"
-                      color="secondary"
-                    >
-                      30+
+                    <Typography variant="h3" color="secondary">
+                      We Connect
                     </Typography>
-                    <Typography
-                      variant="overline"
-                      color="textSecondary"
-                    >
-                      Demo Pages
+                    <Typography variant="overline" color="textSecondary">
+                      You
                     </Typography>
                   </Grid>
                   <Grid item>
-                    <Typography
-                      variant="h1"
-                      color="secondary"
-                    >
-                      UX
+                    <Typography variant="h3" color="secondary">
+                      We Protect
                     </Typography>
-                    <Typography
-                      variant="overline"
-                      color="textSecondary"
-                    >
-                      Complete Flows
+                    <Typography variant="overline" color="textSecondary">
+                      You
                     </Typography>
                   </Grid>
                   <Grid item>
-                    <Typography
-                      variant="h1"
-                      color="secondary"
-                    >
-                      300+
+                    <Typography variant="h3" color="secondary">
+                      We Respect
                     </Typography>
-                    <Typography
-                      variant="overline"
-                      color="textSecondary"
-                    >
-                      Components
+                    <Typography variant="overline" color="textSecondary">
+                      You
                     </Typography>
                   </Grid>
                 </Grid>
               </Box>
-              <Box mt={3}>
+              <div>
+                <Button variant="contained" color="primary">
+                  SIGN UP FOR FREE
+                </Button>
+              </div>
+              {/* <Box mt={3}>
                 <img
                   alt="Javascript"
                   className={classes.technologyIcon}
@@ -153,26 +177,27 @@ const Hero = ({ className, ...rest }) => {
                   className={classes.technologyIcon}
                   src="/static/images/typescript.svg"
                 />
-              </Box>
+              </Box> */}
             </Box>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            md={7}
-          >
+          <Grid item xs={12} md={7}>
             <Box position="relative">
-              <div className={classes.shape}>
-                <img
-                  alt="Shapes"
-                  src="/static/home/shapes.svg"
-                />
-              </div>
+              {/* <div className={classes.shape}>
+                <img alt="Shapes" src="/static/home/shapes.svg" />
+              </div> */}
               <div className={classes.image}>
-                <img
-                  alt="Presentation"
-                  src="/static/home/dark-light.png"
-                />
+                <Swiper
+                  id="main"
+                  tag="section"
+                  wrapperTag="ul"
+                  pagination
+                  spaceBetween={1}
+                  slidesPerView={1}
+                  loop={true}
+                  autoplay={{ delay: 3000, disableOnInteraction: false }}
+                >
+                  {slides}
+                </Swiper>
               </div>
             </Box>
           </Grid>
