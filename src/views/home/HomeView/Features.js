@@ -11,7 +11,7 @@ import {
   makeStyles
 } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.background.default,
     paddingTop: 128,
@@ -27,109 +27,62 @@ const Features = ({ className, ...rest }) => {
   const classes = useStyles();
 
   return (
-    <div
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
+    <div className={clsx(classes.root, className)} {...rest}>
       <Container maxWidth="lg">
-        <Typography
+        {/* <Typography
           component="p"
           variant="overline"
           color="secondary"
           align="center"
         >
           Explore Devias Kit Pro
-        </Typography>
-        <Typography
-          variant="h1"
-          align="center"
-          color="textPrimary"
-        >
-          Not just a pretty face
+        </Typography> */}
+        <Typography variant="h1" align="center" color="textPrimary">
+          Why Choose Vezeti?
         </Typography>
         <Box mt={8}>
-          <Grid
-            container
-            spacing={3}
-          >
-            <Grid
-              item
-              xs={12}
-              md={4}
-            >
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={4}>
               <Box display="flex">
-                <Avatar className={classes.avatar}>
-                  01
-                </Avatar>
+                <Avatar className={classes.avatar}>01</Avatar>
                 <Box ml={2}>
-                  <Typography
-                    variant="h4"
-                    gutterBottom
-                    color="textPrimary"
-                  >
-                    Complete User Flows
+                  <Typography variant="h4" gutterBottom color="textPrimary">
+                    Easy to Setup
                   </Typography>
-                  <Typography
-                    variant="body1"
-                    color="textPrimary"
-                  >
-                    Not just a set of tools, the package includes the most common use cases of
-                    user flows like User Management, Second Level Layout.
+                  <Typography variant="body1" color="textPrimary">
+                    Join the league of professional multinationals and take
+                    advantage of the benefits Vezeti offers businesses that want
+                    the professional fit at affordable rates.
                   </Typography>
                 </Box>
               </Box>
             </Grid>
-            <Grid
-              item
-              xs={12}
-              md={4}
-            >
+            <Grid item xs={12} md={4}>
               <Box display="flex">
-                <Avatar className={classes.avatar}>
-                  02
-                </Avatar>
+                <Avatar className={classes.avatar}>02</Avatar>
                 <Box ml={2}>
-                  <Typography
-                    variant="h4"
-                    gutterBottom
-                    color="textPrimary"
-                  >
-                    Support for Plugins
+                  <Typography variant="h4" gutterBottom color="textPrimary">
+                    Very Affordable
                   </Typography>
-                  <Typography
-                    variant="body1"
-                    color="textPrimary"
-                  >
-                    The kit provides support for multiple third-party plugins right out of the box
-                    like Chart.js, Dropzone.js, Kanban Plugin and many more.
+                  <Typography variant="body1" color="textPrimary">
+                    With rates as low as 2,500 naira a month, Vezeti offers
+                    best-in-class value for money. Where else can you get
+                    world-class service for giveaway prices?
                   </Typography>
                 </Box>
               </Box>
             </Grid>
-            <Grid
-              item
-              xs={12}
-              md={4}
-            >
+            <Grid item xs={12} md={4}>
               <Box display="flex">
-                <Avatar className={classes.avatar}>
-                  03
-                </Avatar>
+                <Avatar className={classes.avatar}>03</Avatar>
                 <Box ml={2}>
-                  <Typography
-                    variant="h4"
-                    gutterBottom
-                    color="textPrimary"
-                  >
-                    Designers, we got you
+                  <Typography variant="h4" gutterBottom color="textPrimary">
+                    Great Support
                   </Typography>
-                  <Typography
-                    variant="body1"
-                    color="textPrimary"
-                    gutterBottom
-                  >
-                    We&apos;ve included the source Sketch &amp; Figma files to Plus &amp;
-                    Extended licenses so you can get creative! Build layouts with confidence.
+                  <Typography variant="body1" color="textPrimary" gutterBottom>
+                    A key component of our operational doctrine is ensuring that
+                    at all times, your value for money gained from our products
+                    doesn’t decrease. We give continuous and technical support.
                   </Typography>
                   <Button
                     variant="outlined"
@@ -137,7 +90,7 @@ const Features = ({ className, ...rest }) => {
                     href="https://sketch.cloud/s/q4a8e"
                     target="_blank"
                   >
-                    Preview Design
+                    SIGN UP FOR FREE
                   </Button>
                 </Box>
               </Box>

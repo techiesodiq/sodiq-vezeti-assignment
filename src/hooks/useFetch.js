@@ -25,7 +25,7 @@ export default function useFetch({ path, method, onSuccess, onError }) {
       }
     }
 
-    //Add orgId to incoming payload because it must be all the request
+    //Add orgId to incoming payload because it must be there for all the request
     if (method === 'POST') {
       data = { ...(data || {}), orgId: '728934' };
     }
