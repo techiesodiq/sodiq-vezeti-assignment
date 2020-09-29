@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core';
+import {
+  makeStyles,
+  Dialog,
+  DialogContentText,
+  DialogActions,
+  DialogTitle,
+  DialogContent,
+  Button
+} from '@material-ui/core';
 import NavBar from './NavBar';
 import TopBar from './TopBar';
 import useAuth from 'src/hooks/useAuth';
@@ -41,6 +49,7 @@ const DashboardLayout = ({ children }) => {
   const { enqueueSnackbar } = useSnackbar();
   const { history } = useHistory();
   const [interval, setIntervalState] = React.useState({});
+  const [open, setOpen] = React.useState(false);
   React.useEffect(() => {
     let interval = setInterval(() => {
       counter++;
@@ -48,6 +57,9 @@ const DashboardLayout = ({ children }) => {
       //after 10 sec logout
       if (counter === 10) {
         handleLogout();
+      }
+      if (counter === 5) {
+        setOpen(true);
       }
     }, 1000);
 
@@ -71,12 +83,20 @@ const DashboardLayout = ({ children }) => {
     }
   };
 
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   //on click return counter to zero
   const handleClick = async () => {
     counter = 0;
   };
   const classes = useStyles();
   const [isMobileNavOpen, setMobileNavOpen] = useState(false);
+
+  React.useEffect(() => {
+    counter = 0;
+  }, []);
 
   return (
     <div className={classes.root} onClick={handleClick}>
@@ -90,6 +110,25 @@ const DashboardLayout = ({ children }) => {
           <div className={classes.content}>{children}</div>
         </div>
       </div>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">Logout Warning</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            You will be logged out in the next 5 sec. Click close to cancel
+            logout.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary" autoFocus>
+            close
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 };
