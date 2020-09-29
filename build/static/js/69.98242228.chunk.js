@@ -1,2 +1,0 @@
-(this["webpackJsonpsodiq-vezeti-assignment"]=this["webpackJsonpsodiq-vezeti-assignment"]||[]).push([[69],{2128:function(e,t,n){"use strict";n.r(t);var a=n(0),i=n.n(a),s=n(337),l=Object(a.lazy)((function(){return n.e(55).then(n.bind(null,2086))}));t.default=function(){return i.a.createElement(s.a,{title:"Getting Started"},i.a.createElement(a.Suspense,{fallback:null},i.a.createElement(l,null)))}}}]);
-//# sourceMappingURL=69.98242228.chunk.js.map
